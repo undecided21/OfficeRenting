@@ -12,8 +12,8 @@ function LandingSection() {
   return (
     <>
       {/* Body */}
-      <div className="flex justify-center mt-10 px-4">
-        <div className="flex flex-col w-full max-w-[900px]  rounded-xl bg-LightBlue p-2">
+      <div className="flex justify-center mt-10 md:px-4">
+        <div className="flex flex-col w-full max-w-[1000px] h-auto  rounded-xl bg-LightBlue md:p-2">
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 p-6">
             <div className="flex flex-col text-black">
@@ -38,7 +38,9 @@ function LandingSection() {
             {/* Slider */}
             <Swiper
               modules={[Pagination]}
-              pagination={true}
+              pagination={{
+                dynamicBullets: true,
+              }}
               spaceBetween={10}
               slidesPerView={1}
               onSlideChange={() => console.log("slide change")}
@@ -47,55 +49,60 @@ function LandingSection() {
               <SwiperSlide>
                 {/* slider 1 */}
                 <div className="flex justify-evenly  ">
-                  <div className="flex gap-4 md:gap-8 flex-wrap justify-center ">
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
+                  <div className="flex md:gap-5 sm:gap-4 gap-3 flex-wrap pb-8 justify-center ">
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
                         <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5 text-BlueGray">
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
                         Staff
                       </h1>
-                      <p className="break-words text-sm  ">
+                      <p className="break-words md:text-sm text-xs text-[10px]">
                         We assure you that our staff will provide you with the
                         utmost experience and guide you in making the right
                         choice.
                       </p>
                     </div>
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
-                        <VerifiedUserIcon />
+
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
+                        <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5 text-BlueGray">
-                        Privacy
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
+                        Staff
                       </h1>
-                      <p className="break-words text-sm ">
-                        We take your privacy seriously—any data you share or
-                        consultations you make are kept strictly confidential
-                        and never recorded.
+                      <p className="break-words md:text-sm text-xs text-[10px]">
+                        We assure you that our staff will provide you with the
+                        utmost experience and guide you in making the right
+                        choice.
                       </p>
                     </div>
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
-                        <RoomPreferencesIcon />
+
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
+                        <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5 text-BlueGray">
-                        Preference
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
+                        Staff
                       </h1>
-                      <p className="break-words text-sm ">
-                        We understand that client preferences matter. That’s why
-                        we offer a wide range of options, and our staff is
-                        dedicated to providing you with the best experience
+                      <p className="break-words md:text-sm text-xs text-[10px]">
+                        We assure you that our staff will provide you with the
+                        utmost experience and guide you in making the right
+                        choice.
                       </p>
                     </div>
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
-                        <AccountBalanceWalletIcon />
+
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
+                        <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5">Budget</h1>
-                      <p className="break-words text-sm ">
-                        We also offer budget-friendly rooms—perfect if you're
-                        just getting started. Choose what suits you best and let
-                        us take care of the rest.
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
+                        Staff
+                      </h1>
+                      <p className="break-words md:text-sm text-xs text-[10px]">
+                        We assure you that our staff will provide you with the
+                        utmost experience and guide you in making the right
+                        choice.
                       </p>
                     </div>
                   </div>
@@ -103,42 +110,62 @@ function LandingSection() {
               </SwiperSlide>
               <SwiperSlide>
                 {/* slider 2 */}
+
                 <div className="flex justify-evenly  ">
-                  <div className="flex gap-5 md:gap-8 flex-wrap justify-center ">
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
+                  <div className="flex md:gap-5 sm:gap-3 gap-1 flex-wrap justify-center ">
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
                         <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5">Office</h1>
-                      <p className="break-words text-sm text-center">
-                        jkashdaskdjasbdabsdkjblaksjndjasdj
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
+                        Staff
+                      </h1>
+                      <p className="break-words md:text-sm text-xs text-[10px]">
+                        We assure you that our staff will provide you with the
+                        utmost experience and guide you in making the right
+                        choice.
                       </p>
                     </div>
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
+
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
                         <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5">Office</h1>
-                      <p className="break-words text-sm text-center">
-                        jkashdaskdjasbdabsdkjblaksjndjasdj
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
+                        Staff
+                      </h1>
+                      <p className="break-words md:text-sm text-xs text-[10px]">
+                        We assure you that our staff will provide you with the
+                        utmost experience and guide you in making the right
+                        choice.
                       </p>
                     </div>
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
+
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
                         <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5">Office</h1>
-                      <p className="break-words text-sm text-center">
-                        jkashdaskdjasbdabsdkjblaksjndjasdj
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
+                        Staff
+                      </h1>
+                      <p className="break-words md:text-sm text-xs text-[10px]">
+                        We assure you that our staff will provide you with the
+                        utmost experience and guide you in making the right
+                        choice.
                       </p>
                     </div>
-                    <div className="flex flex-col my-8 rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
-                      <div className="flex justify-center mt-5">
+
+                    <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
                         <SupervisedUserCircleIcon />
                       </div>
-                      <h1 className="text-center font-bold mb-5">Office</h1>
-                      <p className="break-words text-sm text-center">
-                        jkashdaskdjasbdabsdkjblaksjndjasdj
+                      <h1 className="text-center md:font-bold mb-5 text-BlueGray">
+                        Staff
+                      </h1>
+                      <p className="break-words md:text-sm text-xs text-[10px]">
+                        We assure you that our staff will provide you with the
+                        utmost experience and guide you in making the right
+                        choice.
                       </p>
                     </div>
                   </div>
@@ -152,3 +179,43 @@ function LandingSection() {
   );
 }
 export default LandingSection;
+
+{
+  /* <div className="flex flex-col  rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center">
+                        <VerifiedUserIcon />
+                      </div>
+                      <h1 className="text-center font-bold mb-5 text-BlueGray">
+                        Privacy
+                      </h1>
+                      <p className="break-words text-sm ">
+                        We take your privacy seriously—any data you share or
+                        consultations you make are kept strictly confidential
+                        and never recorded.
+                      </p>
+                    </div>
+                    <div className="flex flex-col  rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
+                        <RoomPreferencesIcon />
+                      </div>
+                      <h1 className="text-center font-bold mb-5 text-BlueGray">
+                        Preference
+                      </h1>
+                      <p className="break-words text-sm ">
+                        We understand that client preferences matter. That’s why
+                        we offer a wide range of options, and our staff is
+                        dedicated to providing you with the best experience
+                      </p>
+                    </div>
+                    <div className="flex flex-col  rounded-lg bg-white border-2 border-LightBlue p-5   h-72 w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
+                      <div className="flex justify-center ">
+                        <AccountBalanceWalletIcon />
+                      </div>
+                      <h1 className="text-center font-bold mb-5">Budget</h1>
+                      <p className="break-words text-sm ">
+                        We also offer budget-friendly rooms—perfect if you're
+                        just getting started. Choose what suits you best and let
+                        us take care of the rest.
+                      </p>
+                    </div> */
+}
