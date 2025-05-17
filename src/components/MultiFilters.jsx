@@ -173,7 +173,7 @@ export default function MultiFilters() {
       </div>
 
       {/* Filtered Items */}
-      <div className=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <div className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-4">
         {filteredData.map((item, idx) => (
           <div
             key={`item-${idx}`}
@@ -182,7 +182,7 @@ export default function MultiFilters() {
             <img
               src={item.image}
               alt={item.images}
-              className="w-full h-80 object-cover rounded-lg mb-3"
+              className="w-full md:h-80 object-cover rounded-lg mb-3"
             />
 
             <div className="flex justify-between">
