@@ -44,15 +44,14 @@ export default function MultiFilters() {
     // Location filtering
     if (selectedLocation && selectedLocation !== "all") {
       tempItems = tempItems.filter(
-        (item) =>
-          item.category.toLowerCase() === selectedLocation.toLowerCase()
+        (item) => item.category.toLowerCase() === selectedLocation.toLowerCase()
       );
     }
 
     // Capacity filtering
     if (selectedCapacity && selectedCapacity !== "all") {
       tempItems = tempItems.filter(
-        (item) => item.capacity === parseInt(selectedCapacity)
+        (item) => parseInt(item.capacity) === parseInt(selectedCapacity)
       );
     }
 
