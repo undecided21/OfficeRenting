@@ -10,12 +10,12 @@ function SectionFooter() {
           <div className="max-w-[900px] flex gap-25">
             <div className="flex gap-3 flex-wrap">
               <div className="flex">
-                <img src="Logo.svg" alt="" />
+                <img src="Logo.svg" alt="" className='h-24 pt-6 ' />
                 <h1 className="pt-12 md:pt-6 ml-2 font-bold ">
                   <span className="text-MainBlue">Agile</span>Spaces
                 </h1>
               </div>
-              <p className="flex pt-6 mx-10">
+              <p className="flex md:pt-6 mx-10">
                 Agile space for more productivity{" "}
               </p>
             </div>

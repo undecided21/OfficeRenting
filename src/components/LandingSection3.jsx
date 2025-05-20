@@ -20,7 +20,7 @@ function LandingSection3() {
         {/* title */}
         <h1 className="text-4xl text-MainBlue font-bold">Job Aplication</h1>
       </div>
-      <div className="flex justify-center ">
+      <div className="flex justify-center mb-16 ">
         <div className="flex flex-wrap max-w-[900px] md:h-[400px] justify-center">
           {/* img */}
           <div className="">
@@ -31,7 +31,7 @@ function LandingSection3() {
             <h1 className="text-4xl text-BlueGray font-bold">
               Why working with us?
             </h1>
-            <p className="break-words font-bold text-3xl text-black/30">
+            <p className="break-words font-bold text-lg md:text-3xl text-black/30">
               Working with us as a startup job company offers benefits not just
               from our side, but for you as well—because with enough
               determination, anything is possible.

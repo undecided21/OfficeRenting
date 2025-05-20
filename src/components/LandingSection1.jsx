@@ -112,7 +112,7 @@ function LandingSection() {
                 {/* slider 2 */}
 
                 <div className="flex justify-evenly  ">
-                  <div className="flex md:gap-5 sm:gap-3 gap-1 flex-wrap justify-center ">
+                  <div className="flex md:gap-5 sm:gap-4 gap-3 flex-wrap pb-8 justify-center ">
                     <div className="flex flex-col rounded-lg  bg-white border-2 border-LightBlue p-5 w-40   md:h-72 md:w-48 shadow-lg hover:scale-105 duration-300 cursor-grab">
                       <div className="flex justify-center ">
                         <SupervisedUserCircleIcon />

@@ -25,30 +25,7 @@ export default function MultiFilters() {
     "Free Water",
   ];
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-
-    if (value === "all") {
-      // Clear all filters and show all items
-      SetSelectFilters([]);
-      return;
-    }
-
-    SetSelectFilters((prev) => {
-      const locations = [
-        "manilla",
-        "Cebu",
-        "BGC",
-        "Cagayan",
-      ];
-
-      // Remove old value of the same type (location)
-      const updated = prev.filter((item) => !locations.includes(item));
-
-      return [...updated, value]; // Add new location
-    });
-  };
-
+  // Tag filter only (for buttons)
   const HandleFilter = (selectedCategory) => {
     if (SelectFilters.includes(selectedCategory)) {
       const updatedFilters = SelectFilters.filter(
@@ -60,37 +37,51 @@ export default function MultiFilters() {
     }
   };
 
+  // Actual filtering logic
   const filterItems = () => {
-    if (SelectFilters.length > 0) {
-      const tempItems = Items.filter((item) => {
-        return (
-          SelectFilters.includes(item.category) ||
-          item.tagged?.some((tag) => SelectFilters.includes(tag)) ||
-          SelectFilters.includes(item.capacity)
-        );
-      });
-      setFilteredData(tempItems);
-    } else {
-      setFilteredData(Items);
+    let tempItems = Items;
+
+    // Location filtering
+    if (selectedLocation && selectedLocation !== "all") {
+      tempItems = tempItems.filter(
+        (item) =>
+          item.category.toLowerCase() === selectedLocation.toLowerCase()
+      );
     }
+
+    // Capacity filtering
+    if (selectedCapacity && selectedCapacity !== "all") {
+      tempItems = tempItems.filter(
+        (item) => item.capacity === parseInt(selectedCapacity)
+      );
+    }
+
+    // Tagged filters
+    if (SelectFilters.length > 0) {
+      tempItems = tempItems.filter((item) =>
+        SelectFilters.every((filter) => item.tagged?.includes(filter))
+      );
+    }
+
+    setFilteredData(tempItems);
   };
 
   useEffect(() => {
     filterItems();
-  }, [SelectFilters]);
+  }, [SelectFilters, selectedLocation, selectedCapacity]);
 
   return (
-    // container
     <div className="p-5 space-y-5 flex flex-col md:gap-20">
-      {/* Filter Pannel */}
+      {/* Filter Panel */}
       <div className="flex justify-center">
-        <div className="md:h-[20vw] md:w-[50vw] w-full h-auto px-5  rounded-lg ">
+        <div className="md:h-[20vw] md:w-[50vw] w-full h-auto px-5 rounded-lg ">
           <div>
             <div className="flex justify-start my-2">
-              <h1 className="bg-MainBlue rounded-lg p-2 text-white text-3xl font-roboto font-bold  ">
-                Filter Pannel:
+              <h1 className="bg-MainBlue rounded-lg p-2 text-white text-3xl font-roboto font-bold">
+                Filter Panel:
               </h1>
             </div>
+
             {/* Filter Buttons */}
             <Stack
               spacing={{ xs: 1, sm: 1 }}
@@ -116,98 +107,87 @@ export default function MultiFilters() {
                 </Button>
               ))}
             </Stack>
+
+            {/* Location Select */}
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-helper-label">
-                Location
-              </InputLabel>
+              <InputLabel>Location</InputLabel>
               <Select
-                labelId="location-label"
-                id="location-select"
                 value={selectedLocation}
                 label="Location"
                 size="small"
-                onChange={(e) => {
-                  setSelectedLocation(e.target.value);
-                  handleChange(e); // keep your existing filtering logic
-                }}
+                onChange={(e) => setSelectedLocation(e.target.value)}
               >
-                <MenuItem value="all">None</MenuItem>
-                <MenuItem className="bg-MainBlue" value="Cebu">Cebu</MenuItem>
+                <MenuItem value="all">All</MenuItem>
+                <MenuItem value="Cebu">Cebu</MenuItem>
                 <MenuItem value="BGC">BGC</MenuItem>
                 <MenuItem value="Cagayan">Cagayan De Oro</MenuItem>
                 <MenuItem value="manilla">Manilla</MenuItem>
               </Select>
-
-              <FormHelperText>With label + helper text</FormHelperText>
+              <FormHelperText>Select office location</FormHelperText>
             </FormControl>
 
+            {/* Capacity Select */}
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-helper-label">
-                Capacity
-              </InputLabel>
+              <InputLabel>Capacity</InputLabel>
               <Select
-                labelId="capacity-label"
-                id="capacity-select"
                 value={selectedCapacity}
                 label="Capacity"
                 size="small"
-                onChange={(e) => {
-                  setSelectedCapacity(e.target.value);
-                  handleChange(e); // optional: only if capacity is also a filter
-                }}
+                onChange={(e) => setSelectedCapacity(e.target.value)}
               >
-                <MenuItem value="all">None</MenuItem>
-                <MenuItem value="capacity1">1</MenuItem>
-                <MenuItem value="2">2</MenuItem>
-                <MenuItem value="3">3</MenuItem>
-                <MenuItem value="4">4</MenuItem>
-                <MenuItem value="5">5</MenuItem>
-                <MenuItem value="6">6</MenuItem>
-                <MenuItem value="7">7</MenuItem>
+                <MenuItem value="all">All</MenuItem>
+                {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+                  <MenuItem key={num} value={num}>
+                    {num}
+                  </MenuItem>
+                ))}
               </Select>
-
-              <FormHelperText>With label + helper text</FormHelperText>
+              <FormHelperText>Choose how many people</FormHelperText>
             </FormControl>
           </div>
         </div>
       </div>
 
       {/* Filtered Items */}
-      <div className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-4">
-        {filteredData.map((item, idx) => (
-          <div
-            key={`item-${idx}`}
-            className="border-2 rounded-xl p-4 shadow hover:shadow-md transition bg-LightBlue"
-          >
-            <img
-              src={item.image}
-              alt={item.images}
-              className="w-full md:h-80 object-cover rounded-lg mb-3"
-            />
-
-            <div className="flex justify-between">
-              <h2 className="text-lg font-semibold">{item.Title}</h2>
-              <h2 className="text-lg font-semibold">Price: {item.Price}</h2>
-            </div>
-            <p className="text-gray-600">Location: {item.category}</p>
-            <p className="text-gray-600">Capacity: {item.capacity}</p>
-
-            {/* Filterable Tagged */}
-            <p>Tag</p>
-            {item.tagged && (
-              <div className="mt-2 flex flex-wrap gap-2">
-                {item.tagged.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="bg-white text-xs px-2 py-1 rounded-full "
-                  >
-                    #{tag}
-                  </span>
-                ))}
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-4">
+        {filteredData.length > 0 ? (
+          filteredData.map((item, idx) => (
+            <div
+              key={`item-${idx}`}
+              className="border-2 rounded-xl p-4 shadow hover:shadow-md transition bg-LightBlue"
+            >
+              <img
+                src={item.image}
+                alt={item.images}
+                className="w-full md:h-80 object-cover rounded-lg mb-3"
+              />
+              <div className="flex justify-between">
+                <h2 className="text-lg font-semibold">{item.Title}</h2>
+                <h2 className="text-lg font-semibold">Price: {item.Price}</h2>
               </div>
-            )}
-          </div>
-        ))}
+              <p className="text-gray-600">Location: {item.category}</p>
+              <p className="text-gray-600">Capacity: {item.capacity}</p>
+
+              {/* Tags */}
+              {item.tagged && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {item.tagged.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="bg-white text-xs px-2 py-1 rounded-full"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <p className="text-center col-span-full text-gray-500">
+            No results found.
+          </p>
+        )}
       </div>
     </div>
   );

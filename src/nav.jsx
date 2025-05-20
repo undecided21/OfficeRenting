@@ -48,7 +48,7 @@ function Nav() {
     <header className="sticky top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="justify-between flex md:mx-20">
         <div className="flex justify-center cursor-pointer">
-          <img src="Logo.svg" alt="" />
+          <img src="Logo.svg" alt="" className="md:h-16 h-14 mt-3"/>
           <h1 className="pt-6 ml-2 font-bold">
             <span className="text-MainBlue">Agile</span>Spaces
           </h1>
@@ -83,7 +83,8 @@ function Nav() {
           <Button
             variant="contained"
             onClick={toggleDrawer(true)}
-            sx={{ px: 5, backgroundColor: "#6A71F1" }}
+            sx={{ backgroundColor: "#6A71F1" }}
+            size="small"
           >
             <MenuIcon />
           </Button>
